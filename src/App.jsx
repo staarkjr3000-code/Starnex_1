@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
-import logo from "./assets/logo.png";
+import { useState } from "react";
+import logoDesktop from "./assets/logo-desktop.png";
+import logoMobile from "./assets/logo-mobile.png";
 
 import LoadingScene from "./components/LoadingScene";
-import VideoBackground from "./components/ResponsiveVideo";
+import ResponsiveVideo from "./components/ResponsiveVideo";
 import TargetCursor from "./components/TargetCursor";
 import BackgroundMusic from "./components/BackgroundMusic";
 
@@ -11,7 +12,6 @@ import HeroPage from "./components/HeroPage";
 import SocialMediaPage from "./components/SocialMediaPage";
 import ContactPage from "./components/ContactPage";
 import { playClick } from "./utils/sound";
-import ResponsiveVideo from "./components/ResponsiveVideo";
 
 export default function App() {
 
@@ -24,28 +24,21 @@ export default function App() {
   const [heroOpen, setHeroOpen] = useState(false);
   const [socialOpen, setSocialOpen] = useState(false);
   const [contactOpen, setContactOpen] = useState(false);
-  
-  
-
 
   /* ================= LOADING SCREEN ================= */
 
   if (!started) {
-
     return (
       <LoadingScene
         onStart={() => {
-          
-
           setStarted(true);
-          document.body.classList.add("main-app");
-
+          setTimeout(() => {
+            setMainVisible(true);
+          }, 1000); // Delay to allow music to start
         }}
       />
     );
-
   }
-
 
   /* ================= MAIN APP ================= */
 
@@ -53,24 +46,36 @@ export default function App() {
 
     <div className="app-root">
 
-
       {/* Responsive Video Background */}
-      <ResponsiveVideo/>
+      <ResponsiveVideo />
 
-      <div className="ground-fog " />
+      <div className="ground-fog" />
 
       {/* MAIN SCREEN */}
       {!exploreOpen && !heroOpen && !socialOpen && !contactOpen && (
 
-      <div className="main-screen">
+        <div className="main-screen">
 
-          {/* CREDIT */}
+          {/* Desktop Logo */}
+          <img
+            src={logoDesktop}
+            className="logo-desktop"
+            draggable="false"
+            alt="Logo Desktop"
+          />
+
+          {/* Mobile Logo */}
+          <img
+            src={logoMobile}
+            className="logo-mobile"
+            draggable="false"
+            alt="Logo Mobile"
+          />
+
           <div className="made-by">
             MADE BY STAARK
           </div>
 
-
-          {/* EXPLORE BUTTON */}
           <button
             className="explore-button"
             onClick={() => {
@@ -85,58 +90,54 @@ export default function App() {
 
       )}
 
-
       {/* EXPLORE PAGE */}
-      {exploreOpen && !heroOpen && !socialOpen&& (
-        
-      <ExplorePage
-       onBack={() => {
-        playClick();
-        setExploreOpen(false);
-       }}
-       
-       onHero={() => {
-        playClick();
-       setExploreOpen(false);
-       setHeroOpen(true);
-     }}
-     onSocial={() => {
-      playClick();
-      setExploreOpen(false);
-      setSocialOpen(true);
-     }}
-     onContact={() => {
-      playClick();
-      setExploreOpen(false);
-      setContactOpen(true);
-     }}
-      />)}
+      {exploreOpen && !heroOpen && !socialOpen && !contactOpen && (
+        <ExplorePage
+          onBack={() => {
+            playClick();
+            setExploreOpen(false);
+          }}
+          onHero={() => {
+            playClick();
+            setExploreOpen(false);
+            setHeroOpen(true);
+          }}
+          onSocial={() => {
+            playClick();
+            setExploreOpen(false);
+            setSocialOpen(true);
+          }}
+          onContact={() => {
+            playClick();
+            setExploreOpen(false);
+            setContactOpen(true);
+          }}
+        />
+      )}
 
       {/* HERO PAGE */}
       {heroOpen && (
-
         <HeroPage
-
           onBack={() => {
             playClick();
             setHeroOpen(false);
             setExploreOpen(true);
           }}
-
         />
-
       )}
-      {/* Social Media Page */}
+
+      {/* SOCIAL PAGE */}
       {socialOpen && (
         <SocialMediaPage
           onBack={() => {
             playClick();
-           setSocialOpen(false);
-           setExploreOpen(true);
-        }}  
-      />
-    )}
-      {/* Contact Page */}
+            setSocialOpen(false);
+            setExploreOpen(true);
+          }}
+        />
+      )}
+
+      {/* CONTACT PAGE */}
       {contactOpen && (
         <ContactPage
           onBack={() => {
@@ -147,14 +148,11 @@ export default function App() {
         />
       )}
 
-
       {/* CURSOR */}
       <TargetCursor />
 
-
       {/* MUSIC */}
       <BackgroundMusic play={started} />
-
 
     </div>
 

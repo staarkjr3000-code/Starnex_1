@@ -36,7 +36,7 @@ export default function LoadingScene({ onStart }) {
 
     const dotInterval = setInterval(() => {
       setDots(prev => prev.length >= 3 ? "" : prev + ".");
-    }, 700); // slower + calmer
+    }, 500); // slower + calmer
 
     return () => clearInterval(dotInterval);
 
