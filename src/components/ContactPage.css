@@ -390,3 +390,8 @@
   to { transform: translateY(100%); }
 
 }
+
+.credit-pages {
+  left: 50%;
+  transform: translateX(-50%);
+}

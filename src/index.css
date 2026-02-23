@@ -256,6 +256,7 @@ body.main-app * {
   gap: 26px;
 }
 
+
 /* ========================= */
 /* MAGNETIC BUTTON */
 /* ========================= */
@@ -481,6 +482,35 @@ canvas {
       drop-shadow(0 0 10px rgba(0,255,255,0.35));
 
     animation: logoGlowSoft 4s ease-in-out infinite;
+  }
+
+}
+
+.made-by {
+  position: fixed;
+  bottom: 60px;
+
+  font-size: 14px;
+  letter-spacing: 6px;
+
+  color: rgba(255,255,255,0.7);
+  text-shadow: 0 0 8px rgba(0,255,255,0.7);
+
+  z-index: 9999;
+}
+
+@media (max-width: 768px) {
+
+  .credit-main {
+    left: 20px;   /* smaller margin on mobile */
+    font-size: 12px;
+    letter-spacing: 4px;
+  }
+
+  .credit-pages {
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
   }
 
 }

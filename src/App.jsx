@@ -72,10 +72,6 @@ export default function App() {
             alt="Logo Mobile"
           />
 
-          <div className="made-by">
-            MADE BY STAARK
-          </div>
-
           <button
             className="explore-button"
             onClick={() => {
@@ -147,6 +143,17 @@ export default function App() {
           }}
         />
       )}
+
+      {/* GLOBAL CREDIT */}
+      <div
+        className={`made-by ${
+          !exploreOpen && !heroOpen && !socialOpen && !contactOpen
+            ? "credit-main"
+            : "credit-pages"
+        }`}
+      >
+        MADE BY STAARK
+      </div>
 
       {/* CURSOR */}
       <TargetCursor />
