@@ -488,7 +488,9 @@ canvas {
 
 .made-by {
   position: fixed;
-  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
 
   font-size: 14px;
   letter-spacing: 6px;
@@ -497,7 +499,14 @@ canvas {
   text-shadow: 0 0 8px rgba(0,255,255,0.7);
 
   z-index: 9999;
-}
+
+     filter:
+      drop-shadow(0 0 5px rgba(0,255,255,0.5))
+      drop-shadow(0 0 10px rgba(0,255,255,0.35));
+
+    animation: logoGlowSoft 4s ease-in-out infinite;
+  }
+
 
 @media (max-width: 768px) {
 
