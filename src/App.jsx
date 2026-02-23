@@ -3,7 +3,6 @@ import logo from "./assets/logo.png";
 
 import LoadingScene from "./components/LoadingScene";
 import VideoBackground from "./components/ResponsiveVideo";
-import Particles from "./components/Particles";
 import TargetCursor from "./components/TargetCursor";
 import BackgroundMusic from "./components/BackgroundMusic";
 
@@ -64,11 +63,6 @@ export default function App() {
       {!exploreOpen && !heroOpen && !socialOpen && !contactOpen && (
 
       <div className="main-screen">
-
-
-          {/* GLOW RING */}
-          <Particles />
-
 
           {/* CREDIT */}
           <div className="made-by">
